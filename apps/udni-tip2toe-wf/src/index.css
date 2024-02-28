@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-gray-700 overflow-y-scroll  p-0 m-0 bg-gray-50;
+  }
+  body,
+  html,
+  #__next {
+    @apply h-screen w-full p-0 m-0;
+  }
+  a {
+    @apply text-udni-teal;
+  }
+  h1 {
+    @apply text-3xl font-bold my-5;
+  }
+  h2 {
+    @apply text-2xl  my-4;
+  }
+  h3 {
+    @apply text-xl  my-2;
+  }
+  h4 {
+    @apply text-lg  my-1;
+  }
+  h5 {
+    @apply text-base;
+  }
+  ul {
+    @apply my-2;
+  }
+  ol {
+    @apply list-decimal;
+  }
+  li {
+    @apply list-disc ml-4;
+  }
+  .navlink.active {
+    @apply text-udni-teal bg-white rounded md:shadow-sm;
+  }
+  th {
+    text-align: left;
+  }
+}
