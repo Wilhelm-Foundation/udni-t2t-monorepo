@@ -2,8 +2,9 @@ import {
   Individual,
   Sex,
   VitalStatus_Status,
-} from '../../interfaces/phenopackets/schema/v2/core/individual';
-import { ICustomFormData } from '../../types';
+} from "../../interfaces/phenopackets/schema/v2/core/individual";
+import { ICustomFormData } from "../../types";
+import { getSex } from "./summary/Resolvers";
 interface IProps {
   individual: Individual;
   customFormData?: ICustomFormData;
@@ -14,83 +15,66 @@ interface IQV {
   value?: string;
 }
 
-function getSex(sex?: Sex) {
-  if (!sex) return '';
-  switch (parseInt(sex?.toString())) {
-    case Sex.UNKNOWN_SEX:
-      return 'Unknown';
-    case Sex.MALE:
-      return 'Male';
-    case Sex.FEMALE:
-      return 'Female';
-    case Sex.UNRECOGNIZED:
-      return 'Unrecognized';
-    case Sex.OTHER_SEX:
-      return 'Other';
-    default:
-      return '';
-  }
-}
 function getVitalStatus(status?: VitalStatus_Status) {
-  if (!status) return '';
+  if (!status) return "";
   switch (parseInt(status?.toString())) {
     case VitalStatus_Status.UNKNOWN_STATUS:
-      return 'Unknown';
+      return "Unknown";
     case VitalStatus_Status.ALIVE:
-      return 'Alive';
+      return "Alive";
     case VitalStatus_Status.DECEASED:
-      return 'Deceased';
+      return "Deceased";
     case VitalStatus_Status.UNRECOGNIZED:
-      return 'Unrecognized';
+      return "Unrecognized";
     default:
-      return '';
+      return "";
   }
 }
 
 export default function ViewIndividual({ individual, customFormData }: IProps) {
   const answers: IQV[] = [
-    { question: 'Local UDP ID', value: individual.id },
-    { question: 'Biological Sex', value: getSex(individual.sex) },
+    { question: "Local UDP ID", value: individual.id },
+    { question: "Biological Sex", value: getSex(individual.sex) },
     {
-      question: 'Date of birth',
+      question: "Date of birth",
       value: individual.dateOfBirth?.toString(),
     },
     {
-      question: 'Age at symptom onset',
+      question: "Age at symptom onset",
       value: `${
         customFormData?.ageSymptomYears
-          ? customFormData?.ageSymptomYears + ' years '
-          : ''
+          ? customFormData?.ageSymptomYears + " years "
+          : ""
       }${
         customFormData?.ageSymptomMonths
-          ? customFormData?.ageSymptomMonths + ' months'
-          : ''
+          ? customFormData?.ageSymptomMonths + " months"
+          : ""
       }`,
     },
     {
-      question: 'Vital status',
+      question: "Vital status",
       value: getVitalStatus(individual.vitalStatus?.status),
     },
     {
-      question: 'Date of birth mother',
+      question: "Date of birth mother",
       value: customFormData?.motherBirthdate,
     },
     {
-      question: 'Date of birth father',
+      question: "Date of birth father",
       value: customFormData?.fatherBirthdate,
     },
     {
-      question: 'Ethnicity of patient',
+      question: "Ethnicity of patient",
       value: customFormData?.ethnicity.toString(),
     },
     {
-      question: 'Referring UDP',
+      question: "Referring UDP",
       value: customFormData?.referringUdp.toString(),
     },
   ];
   return (
     <section>
-      <h2 style={{ pageBreakBefore: 'always' }}>This is {individual.id}</h2>
+      <h2 style={{ pageBreakBefore: "always" }}>This is {individual.id}</h2>
       {answers
         .filter((x) => x.question && x.value)
         .map((x) => (

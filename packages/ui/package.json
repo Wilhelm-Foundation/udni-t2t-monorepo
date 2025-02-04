@@ -17,6 +17,7 @@
     "./questionnaireFormSectionPage": "./src/components/questionnaire/FormSectionPage.tsx",
     "./appContext": "./src/context/AppContext.tsx",
     "./questionnaireSummaryPage": "./src/components/questionnaire/SummaryPage.tsx",
+    "./questionnaireSummaryPageNew": "./src/components/questionnaire/SummaryPageNew.tsx",
     "./styles.css": "./dist/index.css"
   },
   "scripts": {

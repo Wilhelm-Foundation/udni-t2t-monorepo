@@ -1,18 +1,18 @@
-import { useContext, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
-import { AppContext } from '../../context/AppContext';
+import { useContext, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { AppContext } from "../../context/AppContext";
 import {
   Individual,
   KaryotypicSex,
   Sex,
   VitalStatus_Status,
-} from '../../interfaces/phenopackets/schema/v2/core/individual';
-import { ICustomFormData } from '../../types';
-import Input from '../individual/Input';
-import Select from '../individual/Select';
-import NextButton from './form/NextButton';
-import { useNextUrl } from './layouts/Layout';
+} from "../../interfaces/phenopackets/schema/v2/core/individual";
+import { ICustomFormData } from "../../types";
+import Input from "../individual/Input";
+import Select from "../individual/Select";
+import NextButton from "./form/NextButton";
+import { useNextUrl } from "./layouts/Layout";
 
 export interface IIndividualFormData {
   subject: Partial<Individual>;
@@ -50,13 +50,13 @@ export default function EditIndividual() {
       karyotypicSex: KaryotypicSex.UNKNOWN_KARYOTYPE,
       taxonomy: undefined,
       timeAtLastEncounter: undefined,
-      id: '',
+      id: "",
       sex: Sex.UNKNOWN_SEX,
       vitalStatus: undefined,
       ...formData.subject,
     };
-    dispatch({ type: 'SET_INDIVIDUAL', payload: subject });
-    dispatch({ type: 'CUSTOM_FORM_DATA', payload: formData.customFormData });
+    dispatch({ type: "SET_INDIVIDUAL", payload: subject });
+    dispatch({ type: "CUSTOM_FORM_DATA", payload: formData.customFormData });
 
     nextUrl !== null && navigate(nextUrl);
   };
@@ -64,18 +64,18 @@ export default function EditIndividual() {
     <form onSubmit={handleSubmit(doSubmit)} className="mt-5 max-w-xl">
       <h2>Individual</h2>
       <div className="my-4">
-        <Input type="text" label="Local UDP ID" {...register('subject.id')} />
+        <Input type="text" label="Local UDP ID" {...register("subject.id")} />
       </div>
       <div className="my-4">
         <Select
           label="Biological sex"
-          {...register('subject.sex', { valueAsNumber: true })}
+          {...register("subject.sex", { valueAsNumber: true })}
           options={[
-            { value: Sex.UNKNOWN_SEX.toString(), label: 'Unknown' },
-            { value: Sex.MALE.toString(), label: 'Male' },
-            { value: Sex.FEMALE.toString(), label: 'Female' },
-            { value: Sex.UNRECOGNIZED.toString(), label: 'Unrecognized' },
-            { value: Sex.OTHER_SEX.toString(), label: 'Other' },
+            { value: Sex.UNKNOWN_SEX.toString(), label: "Unknown" },
+            { value: Sex.MALE.toString(), label: "Male" },
+            { value: Sex.FEMALE.toString(), label: "Female" },
+            { value: Sex.UNRECOGNIZED.toString(), label: "Unrecognized" },
+            { value: Sex.OTHER_SEX.toString(), label: "Other" },
           ]}
         />
         {errors?.subject?.sex && (
@@ -84,17 +84,17 @@ export default function EditIndividual() {
       </div>
       <div className="my-4">
         <Select
-          {...register('subject.vitalStatus.status', { valueAsNumber: true })}
+          {...register("subject.vitalStatus.status", { valueAsNumber: true })}
           label="Vital status"
           options={[
             {
               value: VitalStatus_Status.UNKNOWN_STATUS.toString(),
-              label: 'Unknown',
+              label: "Unknown",
             },
-            { value: VitalStatus_Status.ALIVE.toString(), label: 'Alive' },
+            { value: VitalStatus_Status.ALIVE.toString(), label: "Alive" },
             {
               value: VitalStatus_Status.DECEASED.toString(),
-              label: 'Deceased',
+              label: "Deceased",
             },
           ]}
         />
@@ -106,7 +106,7 @@ export default function EditIndividual() {
         <Input
           type="date"
           label="Date of birth"
-          {...register('subject.dateOfBirth')}
+          {...register("subject.dateOfBirth")}
         />
         {errors?.subject?.dateOfBirth && (
           <p className="text-red-500">{errors.subject.dateOfBirth.message}</p>
@@ -120,7 +120,7 @@ export default function EditIndividual() {
             min={0}
             label="Years"
             className="w-20"
-            {...register('customFormData.ageSymptomYears')}
+            {...register("customFormData.ageSymptomYears")}
           />
           <Input
             type="number"
@@ -128,7 +128,7 @@ export default function EditIndividual() {
             max={12}
             label="Months"
             className="w-20"
-            {...register('customFormData.ageSymptomMonths')}
+            {...register("customFormData.ageSymptomMonths")}
           />
         </div>
       </div>
@@ -136,30 +136,30 @@ export default function EditIndividual() {
         <Input
           type="date"
           label="Date of birth mother"
-          {...register('customFormData.motherBirthdate')}
+          {...register("customFormData.motherBirthdate")}
         />
       </div>
       <div className="my-4">
         <Input
           type="date"
           label="Date of birth father"
-          {...register('customFormData.fatherBirthdate')}
+          {...register("customFormData.fatherBirthdate")}
         />
       </div>
       <div className="my-4">
         <Select
           label="Ethnicity of patient"
-          {...register('customFormData.ethnicity')}
+          {...register("customFormData.ethnicity")}
           options={[
-            'Unknown',
-            'African',
-            'American',
-            'Asian',
-            'European',
-            'Latino',
-            'Middle East',
-            'Oceanian',
-            'Mixed',
+            "Unknown",
+            "African",
+            "American",
+            "Asian",
+            "European",
+            "Latino",
+            "Middle East",
+            "Oceanian",
+            "Mixed",
           ].map((x) => ({ label: x, value: x }))}
         />
         {errors?.customFormData?.ethnicity && (
@@ -172,7 +172,7 @@ export default function EditIndividual() {
         <label htmlFor="customFormData.referringUdp">Referring UDP</label>
         <textarea
           id="customFormData.referringUdp"
-          {...register('customFormData.referringUdp')}
+          {...register("customFormData.referringUdp")}
           className="block p-2 w-full rounded border border-gray-300 shadow-sm focus:border-udni-teal focus:ring-4 focus:outline-none focus:ring-udni-teal-100"
         ></textarea>
       </div>

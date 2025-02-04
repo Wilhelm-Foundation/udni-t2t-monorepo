@@ -85,8 +85,7 @@ export default function SubmitForm() {
       }
     }
 
-    //const VITE_APIURL = import.meta.env.VITE_APIURL;
-    const VITE_APIURL = "";
+    const VITE_APIURL = state.VITE_APIURL;
     if (VITE_APIURL) {
       const res = await fetch(`${VITE_APIURL}/api/v1/phenopacket`, {
         method: "POST",

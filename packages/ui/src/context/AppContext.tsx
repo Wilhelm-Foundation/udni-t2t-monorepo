@@ -2,7 +2,7 @@ import { createContext, useEffect, useMemo, useReducer } from "react";
 import { Individual } from "../interfaces/phenopackets/schema/v2/core/individual";
 import { PhenotypicFeature } from "../interfaces/phenopackets/schema/v2/core/phenotypic_feature";
 import { Phenopacket } from "../interfaces/phenopackets/schema/v2/phenopackets";
-import { ICustomFormData, IForm, PhenopacketDate } from "../types";
+import { Config, ICustomFormData, IForm, PhenopacketDate } from "../types";
 import { File as PhenopacketFile } from "../interfaces/phenopackets/schema/v2/core/base";
 import SuggestedFeature from "../interfaces/suggested-feature";
 
@@ -44,6 +44,7 @@ export interface IAppContext {
   customFormData?: ICustomFormData;
   VITE_APIURL?: string;
   tip2toeForm?: IForm;
+  summaryForm?: Config;
 }
 
 const emptyState: IAppContext = {
@@ -52,6 +53,7 @@ const emptyState: IAppContext = {
   suggestedFeatures: [],
   VITE_APIURL: "",
   tip2toeForm: {} as IForm,
+  summaryForm: {} as Config,
 };
 
 let initialState: IAppContext = {
@@ -173,10 +175,21 @@ interface ProviderProps {
   children: React.ReactNode;
   apiUrl: string;
   tip2toeForm: IForm;
+  summaryForm: Config;
 }
 
-function AppProvider({ children, tip2toeForm, apiUrl }: ProviderProps) {
-  initialState = { ...initialState, tip2toeForm, VITE_APIURL: apiUrl };
+function AppProvider({
+  children,
+  tip2toeForm,
+  apiUrl,
+  summaryForm,
+}: ProviderProps) {
+  initialState = {
+    ...initialState,
+    tip2toeForm,
+    VITE_APIURL: apiUrl,
+    summaryForm,
+  };
   const [state, dispatch] = useReducer(appReducer, initialState);
 
   const contextValue = useMemo(() => {

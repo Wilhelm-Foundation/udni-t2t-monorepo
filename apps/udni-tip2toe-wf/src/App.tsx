@@ -8,11 +8,17 @@ import Questionnaire from "@repo/ui/questionnaireIndex";
 import FormSectionPage from "@repo/ui/questionnaireFormSectionPage";
 import { AppProvider } from "@repo/ui/appContext";
 import SummaryPage from "@repo/ui/questionnaireSummaryPage";
+import SummaryPageNew from "@repo/ui/questionnaireSummaryPageNew";
 import tip2toeForm from "./tip2toeform";
+import { config } from "./tip2toesummary";
 
 function App() {
   return (
-    <AppProvider tip2toeForm={tip2toeForm} apiUrl={import.meta.env.VITE_APIURL}>
+    <AppProvider
+      tip2toeForm={tip2toeForm}
+      summaryForm={config}
+      apiUrl={import.meta.env.VITE_APIURL}
+    >
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
@@ -23,6 +29,7 @@ function App() {
             <Route path="individual" element={<EditIndividual />} />
             <Route path=":slug" element={<FormSectionPage />} />
             <Route path="summary" element={<SummaryPage />} />
+            <Route path="summarynew" element={<SummaryPageNew />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

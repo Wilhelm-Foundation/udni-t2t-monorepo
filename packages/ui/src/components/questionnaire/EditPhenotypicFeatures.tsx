@@ -226,12 +226,15 @@ export default function EditPhenotypicFeatures({ slug, ontologies }: IProps) {
             </div>
           ))}
       </fieldset>
-      <SuggestedPhenotypicFeatures
-        slug={slug}
-        addTerm={(term) => {
-          onAddCustomTerm({ term });
-        }}
-      ></SuggestedPhenotypicFeatures>
+      {false && (
+        <SuggestedPhenotypicFeatures
+          slug={slug}
+          addTerm={(term) => {
+            onAddCustomTerm({ term });
+          }}
+        ></SuggestedPhenotypicFeatures>
+      )}
+      {/* TODO: Teporary commented the suggested feature */}
       <NavButtons />
     </>
   );

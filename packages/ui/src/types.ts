@@ -1,14 +1,14 @@
-import { OntologyClass } from './interfaces/phenopackets/schema/v2/core/base';
-import { Phenopacket } from './interfaces/phenopackets/schema/v2/phenopackets';
+import { OntologyClass } from "./interfaces/phenopackets/schema/v2/core/base";
+import { Phenopacket } from "./interfaces/phenopackets/schema/v2/phenopackets";
 
-export type YesNoUnknown = 'yes' | 'no' | 'unknown';
+export type YesNoUnknown = "yes" | "no" | "unknown";
 export type QuestionType =
-  | 'text'
-  | 'longText'
-  | 'number'
-  | 'select'
-  | 'selectMultiple'
-  | 'date';
+  | "text"
+  | "longText"
+  | "number"
+  | "select"
+  | "selectMultiple"
+  | "date";
 export interface IQuestion {
   title: string;
   name: string;
@@ -78,4 +78,42 @@ export interface ICustomFormData {
 
 export interface PhenopacketDate {
   seconds: number;
+}
+
+export interface DropdownControl {
+  type: "dropdown";
+  options: string[];
+  key: string;
+}
+
+export interface TextboxControl {
+  type: "textbox";
+  key: string;
+}
+
+export interface DataControl {
+  type: "data";
+  key: string;
+}
+
+export interface PhenoPacketControl {
+  type: "phenopacket";
+  valueFunction: (x: any) => string;
+  key: string;
+}
+
+export interface DynamicPlaceholder {
+  type: "dynamic";
+  key: string; // Key to identify the dynamic value (e.g., "age", "sex")
+}
+
+export type Control = DropdownControl | TextboxControl | DynamicPlaceholder;
+
+export interface Section {
+  text: string;
+  content: (string | Control)[];
+}
+
+export interface Config {
+  sections: Section[];
 }
