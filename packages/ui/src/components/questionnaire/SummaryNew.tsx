@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 import { AppContext } from "../../context/AppContext";
 import { Phenopacket } from "../../interfaces/phenopackets/schema/v2/phenopackets";
@@ -33,7 +34,7 @@ export default function SummaryNew({ phenoPacket, customFormData }: IProps) {
       case "dropdown":
         return (
           <select
-            className="w-24 p-2 rounded border border-gray-300 shadow-sm focus:border-udni-teal focus:ring-4 focus:outline-none focus:ring-udni-teal-100"
+            className="py-2 rounded border border-gray-300 shadow-sm focus:border-udni-teal focus:ring-4 focus:outline-none focus:ring-udni-teal-100"
             value={formData[control.key] || ""}
             onChange={(e) => handleChange(control.key, e.target.value)}
           >
@@ -67,8 +68,13 @@ export default function SummaryNew({ phenoPacket, customFormData }: IProps) {
     if (isKeyOfResolvers(placeholder.key)) {
       const resolver = dynamicResolvers[placeholder.key];
       if (resolver) {
-        console.log("ethnicity", formData["ethnicity"]);
-        return resolver({ phenoPacket, formData: customFormData || {} });
+        console.log("formData", customFormData);
+        console.log("phenoPacket", phenoPacket);
+        return resolver({
+          phenoPacket,
+          formData: customFormData || {},
+          formDataKey: placeholder.formDataKey,
+        });
       }
     }
     return `[Unknown: ${placeholder.key}]`;
@@ -79,7 +85,18 @@ export default function SummaryNew({ phenoPacket, customFormData }: IProps) {
       if (typeof item === "string") {
         return <span key={index}>{item}</span>;
       } else if (typeof item === "object" && item.type === "dynamic") {
-        return <span key={index}>{resolveDynamicPlaceholder(item)}</span>;
+        return (
+          <span key={index}>
+            <NavLink
+              className={({ isActive }) =>
+                ` items-center rounded-md text-udni-teal`
+              }
+              to={`/questionnaire/${item.source}`}
+            >
+              {resolveDynamicPlaceholder(item) || "No Data"}
+            </NavLink>
+          </span>
+        );
       } else {
         return <span key={index}>{renderControl(item)}</span>;
       }

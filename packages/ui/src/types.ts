@@ -91,20 +91,11 @@ export interface TextboxControl {
   key: string;
 }
 
-export interface DataControl {
-  type: "data";
-  key: string;
-}
-
-export interface PhenoPacketControl {
-  type: "phenopacket";
-  valueFunction: (x: any) => string;
-  key: string;
-}
-
 export interface DynamicPlaceholder {
   type: "dynamic";
   key: string; // Key to identify the dynamic value (e.g., "age", "sex")
+  source: string;
+  formDataKey?: string;
 }
 
 export type Control = DropdownControl | TextboxControl | DynamicPlaceholder;
