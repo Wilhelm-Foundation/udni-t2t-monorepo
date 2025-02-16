@@ -1,5 +1,16 @@
 import { Config } from "@repo/ui/types";
 
+const SD_VALUES = [
+  "≤ -3",
+  "-2 to -3",
+  "-1 to -2",
+  "-1 to +1",
+  "+1 to +2",
+  "+2 to +3",
+  "≥ +3",
+];
+const APGAR_SCORE_VALUES = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+
 export const config: Config = {
   sections: [
     {
@@ -149,42 +160,57 @@ export const config: Config = {
           key: "customFormDataResolver",
           source: "growth-chart",
         },
-        " grams - [(",
+        " grams - [( ",
         {
-          type: "dynamic",
-          formDataKey: "lastVisitWeight",
-          key: "customFormDataResolver",
-          source: "growth-chart",
+          type: "dropdown",
+          options: [...SD_VALUES],
+          key: "lastVisitWeight",
         },
-        ") SD], birth length ",
+        " ) SD], birth length ",
         {
           type: "dynamic",
           formDataKey: "birthLength",
           key: "customFormDataResolver",
           source: "growth-chart",
         },
-        " centimeters  - [(",
+        " centimeters  - [( ",
         {
-          type: "dynamic",
-          formDataKey: "lastVisitLength",
-          key: "customFormDataResolver",
-          source: "growth-chart",
+          type: "dropdown",
+          options: [...SD_VALUES],
+          key: "lastVisitLength",
         },
-        ") SD], and head circumference ",
+        " ) SD], and head circumference ",
         {
           type: "dynamic",
           formDataKey: "headCircumference",
           key: "customFormDataResolver",
           source: "growth-chart",
         },
-        " centimeters - [(",
+        " centimeters - [( ",
         {
-          type: "dynamic",
-          formDataKey: "lastVisitHeadCircumference",
-          key: "customFormDataResolver",
-          source: "growth-chart",
+          type: "dropdown",
+          options: [...SD_VALUES],
+          key: "lastVisitHeadCircumference",
         },
-        ") SD]. Apgar scores were (#),  (#), and  (#) after 1, 5 and 10 minutes, respectively. ",
+        " ) SD]. Apgar scores were (",
+        {
+          type: "dropdown",
+          options: [...APGAR_SCORE_VALUES],
+          key: "apgarScore1",
+        },
+        "),  ( ",
+        {
+          type: "dropdown",
+          options: [...APGAR_SCORE_VALUES],
+          key: "apgarScore5",
+        },
+        " ), and  ( ",
+        {
+          type: "dropdown",
+          options: [...APGAR_SCORE_VALUES],
+          key: "apgarScore10",
+        },
+        " ) after 1, 5 and 10 minutes, respectively. ",
       ],
     },
   ],
