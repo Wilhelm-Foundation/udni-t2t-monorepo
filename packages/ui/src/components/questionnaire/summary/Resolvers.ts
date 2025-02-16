@@ -60,6 +60,7 @@ type ResolverData = {
   phenoPacket: Partial<Phenopacket>;
   formData: ICustomFormData;
   formDataKey?: string;
+  phenoPacketKey?: string;
 };
 
 export const dynamicResolvers = {
@@ -78,7 +79,6 @@ export const dynamicResolvers = {
       true
     ),
   sex: (context: ResolverData) => getSex(context.phenoPacket.subject?.sex),
-  ethnicity: (context: ResolverData) => context.formData["ethnicity"],
   relativeAffected: (context: ResolverData) => {
     const selectedValue = context.formData["relativeAffected"];
     if (selectedValue === "No") return "are no";
@@ -86,15 +86,15 @@ export const dynamicResolvers = {
     else if (selectedValue === "Unknown") return "are/are no";
     return "";
   },
-  pregnancyStatus: (context: ResolverData) =>
+  phenotypicFeatureStatus: (context: ResolverData) =>
     context.phenoPacket.phenotypicFeatures?.find(
-      (f) => f.description === "pregnancy"
+      (f) => f.description === context.phenoPacketKey
     )
       ? "Abnormal"
       : "Normal",
-  pregnancyComplicatedHPO: (context: ResolverData) => {
+  phenotypicFeatureComplicatedHPO: (context: ResolverData) => {
     const hpoTerm = context.phenoPacket.phenotypicFeatures?.find(
-      (f) => f.description === "pregnancy" && f.excluded === false
+      (f) => f.description === context.phenoPacketKey && f.excluded === false
     );
     return hpoTerm?.type?.id;
   },

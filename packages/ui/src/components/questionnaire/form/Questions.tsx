@@ -1,13 +1,14 @@
-import { useContext } from 'react';
-import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
-import { AppContext } from '../../../context/AppContext';
-import { ICustomFormData, IQuestion } from '../../../types';
-import Input from '../../individual/Input';
-import Select from '../../individual/Select';
-import TextArea from '../../individual/TextArea';
-import { useNextUrl } from '../layouts/Layout';
-import NextButton from './NextButton';
+import { useContext } from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+
+import { AppContext } from "../../../context/AppContext";
+import { ICustomFormData, IQuestion } from "../../../types";
+import Input from "../../individual/Input";
+import Select from "../../individual/Select";
+import TextArea from "../../individual/TextArea";
+import { useNextUrl } from "../layouts/Layout";
+import NextButton from "./NextButton";
 
 interface IProps {
   questions?: IQuestion[];
@@ -22,38 +23,38 @@ export default function Questions({ questions }: IProps) {
   });
 
   const doSubmit = async (formData: ICustomFormData) => {
-    dispatch({ type: 'CUSTOM_FORM_DATA', payload: formData });
+    dispatch({ type: "CUSTOM_FORM_DATA", payload: formData });
     nextUrl !== null && navigate(nextUrl);
   };
   return (
     <form onSubmit={handleSubmit(doSubmit)} className="my-5">
       {questions?.map(({ title, name, options, type }) => {
         switch (type) {
-          case 'selectMultiple':
-          case 'select':
+          case "selectMultiple":
+          case "select":
             return (
               <div className="my-4" key={name}>
                 <Select
                   {...register(name)}
                   label={title}
-                  multiple={type === 'selectMultiple'}
+                  multiple={type === "selectMultiple"}
                   options={options?.map((o) => ({ value: o, label: o })) || []}
                 />
               </div>
             );
-          case 'text':
+          case "text":
             return (
               <div className="my-4" key={name}>
                 <Input type="text" {...register(name)} label={title} />
               </div>
             );
-          case 'number':
+          case "number":
             return (
               <div className="my-4" key={name}>
                 <Input type="number" {...register(name)} label={title} />
               </div>
             );
-          case 'date':
+          case "date":
             return (
               <div className="my-4" key={name}>
                 <Input type="date" {...register(name)} label={title} />

@@ -96,6 +96,7 @@ export interface DynamicPlaceholder {
   key: string; // Key to identify the dynamic value (e.g., "age", "sex")
   source: string;
   formDataKey?: string;
+  phenotypicFeatureKey?: string;
 }
 
 export type Control = DropdownControl | TextboxControl | DynamicPlaceholder;

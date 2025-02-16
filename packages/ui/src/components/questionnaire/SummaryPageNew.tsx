@@ -1,6 +1,7 @@
 import { PrinterIcon } from "@heroicons/react/24/outline";
 import NavButtons from "./form/NavButtons";
 import { useContext } from "react";
+
 import { AppContext } from "../../context/AppContext";
 import SubmitForm from "./SubmitForm";
 import SummaryNew from "./SummaryNew";

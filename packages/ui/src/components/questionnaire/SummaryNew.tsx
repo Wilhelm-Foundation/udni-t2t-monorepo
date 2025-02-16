@@ -11,21 +11,16 @@ interface IProps {
   customFormData?: ICustomFormData;
 }
 
-interface FormData {
-  [key: string]: string;
-}
-
 export default function SummaryNew({ phenoPacket, customFormData }: IProps) {
   const {
     state: { tip2toeForm, summaryForm: config },
+    dispatch,
   } = useContext(AppContext);
 
-  const [formData, setFormData] = useState<FormData>({});
-
   const handleChange = (key: string, value: string) => {
-    setFormData({
-      ...formData,
-      [key]: value,
+    dispatch({
+      type: "CUSTOM_FORM_DATA",
+      payload: { ...customFormData, [key]: value },
     });
   };
 
@@ -35,12 +30,12 @@ export default function SummaryNew({ phenoPacket, customFormData }: IProps) {
         return (
           <select
             className="py-2 rounded border border-gray-300 shadow-sm focus:border-udni-teal focus:ring-4 focus:outline-none focus:ring-udni-teal-100"
-            value={formData[control.key] || ""}
+            value={customFormData![control.key] || ""}
             onChange={(e) => handleChange(control.key, e.target.value)}
           >
             <option value="">Select</option>
             {control.options.map((option, index) => (
-              <option key={index} value={option}>
+              <option key={index} value={index + 1}>
                 {option}
               </option>
             ))}
@@ -51,7 +46,7 @@ export default function SummaryNew({ phenoPacket, customFormData }: IProps) {
           <input
             className="p-2 rounded border border-gray-300 shadow-sm focus:border-udni-teal focus:ring-4 focus:outline-none focus:ring-udni-teal-100"
             type="text"
-            value={formData[control.key] || ""}
+            value={customFormData![control.key] || ""}
             onChange={(e) => handleChange(control.key, e.target.value)}
           />
         );
@@ -74,6 +69,7 @@ export default function SummaryNew({ phenoPacket, customFormData }: IProps) {
           phenoPacket,
           formData: customFormData || {},
           formDataKey: placeholder.formDataKey,
+          phenoPacketKey: placeholder.phenotypicFeatureKey,
         });
       }
     }
