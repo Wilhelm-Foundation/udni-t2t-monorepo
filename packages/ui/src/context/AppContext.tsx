@@ -74,9 +74,15 @@ const AppContext = createContext<{
 });
 
 const appReducer = (state: IAppContext, action: Action) => {
+  console.log(action.type, state.VITE_APIURL || "No URL Top");
   switch (action.type) {
     case "CLEAR":
-      return emptyState;
+      return {
+        ...emptyState,
+        VITE_APIURL: state.VITE_APIURL,
+        tip2toeForm: state.tip2toeForm,
+        summaryForm: state.summaryForm,
+      };
     case "SET_AUTOSAVE":
       // clears localstorage in useEffect below
       return { ...state, autoSave: action.payload as boolean };
@@ -101,6 +107,7 @@ const appReducer = (state: IAppContext, action: Action) => {
           ).seconds
         ).toLocaleDateString();
       return {
+        ...state,
         phenoPacket,
         customFormData,
         autoSave: false,
