@@ -213,5 +213,51 @@ export const config: Config = {
         " ) after 1, 5 and 10 minutes, respectively. ",
       ],
     },
+    {
+      text: "Neonatal",
+      content: [
+        "The patient’s neonatal period was ",
+        {
+          type: "dynamic",
+          key: "phenotypicFeatureStatus",
+          phenotypicFeatureKey: "neonatal-period-complications",
+          source: "neonatal-period-complications",
+        },
+        ", ",
+        {
+          type: "dynamic",
+          key: "phenotypicFeatureComplicatedHPO",
+          phenotypicFeatureKey: "neonatal-period-complications",
+          source: "neonatal-period-complications",
+        },
+        " and ",
+        {
+          type: "textbox",
+          key: "neonatal-period-complications",
+        },
+        ". Newborn screening was performed with ",
+        {
+          type: "dropdown",
+          options: ["normal", "abnormal"],
+          key: "newbornscreening",
+        },
+        " results - ",
+        {
+          type: "textbox",
+          key: "newbornscreeningresult",
+        },
+        ". Imaging (e.g. ultrasound) during the neonatal period showed ",
+        {
+          type: "dropdown",
+          options: ["normal", "abnormal"],
+          key: "neonatalperiodimaging",
+        },
+        " results.",
+        {
+          type: "textbox",
+          key: "neonatalperiodimagingfinding",
+        },
+      ],
+    },
   ],
 };
