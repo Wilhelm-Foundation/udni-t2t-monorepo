@@ -99,7 +99,15 @@ export interface DynamicPlaceholder {
   phenotypicFeatureKey?: string;
 }
 
-export type Control = DropdownControl | TextboxControl | DynamicPlaceholder;
+export interface LineBreak {
+  type: "lineBreak";
+}
+
+export type Control =
+  | DropdownControl
+  | TextboxControl
+  | DynamicPlaceholder
+  | LineBreak;
 
 export interface Section {
   text: string;

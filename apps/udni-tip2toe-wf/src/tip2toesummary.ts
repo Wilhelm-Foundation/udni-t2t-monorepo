@@ -9,7 +9,9 @@ const SD_VALUES = [
   "+2 to +3",
   "≥ +3",
 ];
-const APGAR_SCORE_VALUES = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+const APGAR_SCORE_VALUES = [...Array(10).keys()].map((num) => `${num + 1}`);
+const YEAR_VALUES = [...Array(20).keys()].map((num) => `${num + 1}`);
+const MONTH_VALUES = [...Array(12).keys()].map((num) => `${num + 1}`);
 
 export const config: Config = {
   sections: [
@@ -252,12 +254,93 @@ export const config: Config = {
           options: ["normal", "abnormal"],
           key: "neonatalperiodimaging",
         },
-        " results.",
+        " results. ",
         {
           type: "textbox",
           key: "neonatalperiodimagingfinding",
         },
       ],
+    },
+    {
+      text: "Childhood into adulthood",
+      content: [
+        "The developmental milestones during the first years were ",
+        {
+          type: "dropdown",
+          options: ["normal", "delayed"],
+          key: "developmentalmilestones",
+        },
+        "The patient could sit unsupported at ",
+        {
+          type: "dropdown",
+          options: [...MONTH_VALUES],
+          key: "situnsupportedmonths",
+        },
+        " months and walk independently at ",
+        {
+          type: "dropdown",
+          options: [...MONTH_VALUES],
+          key: "walkindependentlymonths",
+        },
+        " months of age. At the last visit, at age ",
+        {
+          type: "dropdown",
+          options: [...YEAR_VALUES],
+          key: "lastvisitageyear",
+        },
+        " years and ",
+        {
+          type: "dropdown",
+          options: [...MONTH_VALUES],
+          key: "lastvisitagemonth",
+        },
+        " months, the patient was ",
+        {
+          type: "dropdown",
+          options: ["ambulatory", "non ambulatory"],
+          key: "lastvisitageyear",
+        },
+        ".",
+        {
+          type: "lineBreak",
+        },
+        "The speech development was ",
+        {
+          type: "dynamic",
+          key: "phenotypicFeatureStatus",
+          phenotypicFeatureKey: "speech",
+          source: "speech",
+        },
+        ". Today, at age ",
+        {
+          type: "dropdown",
+          options: [...YEAR_VALUES],
+          key: "speechageyear",
+        },
+        " years and ",
+        {
+          type: "dropdown",
+          options: [...MONTH_VALUES],
+          key: "speechagemonth",
+        },
+        " months, the patient has ",
+        {
+          type: "dynamic",
+          key: "phenotypicFeatureComplicatedHPO",
+          phenotypicFeatureKey: "speech",
+          source: "speech",
+        },
+        ", ",
+        {
+          type: "textbox",
+          key: "speech",
+        },
+        ".",
+      ],
+    },
+    {
+      text: "",
+      content: [],
     },
   ],
 };

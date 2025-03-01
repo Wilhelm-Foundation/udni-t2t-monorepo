@@ -93,6 +93,9 @@ export default function SummaryNew({ phenoPacket, customFormData }: IProps) {
             </NavLink>
           </span>
         );
+      } else if (typeof item === "object" && item.type === "lineBreak") {
+        //return <br key={index} />;
+        return <div key={index} className="my-4" />;
       } else {
         return <span key={index}>{renderControl(item)}</span>;
       }
