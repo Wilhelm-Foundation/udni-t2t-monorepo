@@ -106,7 +106,7 @@ export default function SummaryNew({ phenoPacket, customFormData }: IProps) {
     <div>
       {config?.sections.map((section, index) => (
         <div key={index}>
-          <h4>{section.text}</h4>
+          <h4 className="font-bold">{section.text}</h4>
           <p>{renderContent(section.content)}</p>
           <br />
           <br />

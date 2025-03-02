@@ -4,12 +4,12 @@ import { ICustomFormData } from "../../../types";
 
 export const calculateAge = (
   fromDate: Date | undefined,
-  dateOfBirth: Date | undefined,
+  toDate: Date | undefined,
   onlyYears: boolean = false
 ): string => {
-  if (dateOfBirth) {
+  if (toDate) {
     const today = new Date();
-    const dob = new Date(dateOfBirth);
+    const dob = new Date(toDate);
     const from = fromDate ? new Date(fromDate) : new Date(today);
 
     let years = from.getFullYear() - dob.getFullYear();
@@ -77,6 +77,11 @@ export const dynamicResolvers = {
       context.phenoPacket.subject?.dateOfBirth,
       new Date(context.formData["fatherBirthdate"]),
       true
+    ),
+  lastVisitAge: (context: ResolverData) =>
+    calculateAge(
+      new Date(context.formData["lastVisitDate"]),
+      context.phenoPacket.subject?.dateOfBirth
     ),
   sex: (context: ResolverData) => getSex(context.phenoPacket.subject?.sex),
   relativeAffected: (context: ResolverData) => {
