@@ -2,6 +2,13 @@ import { Sex } from "../../../interfaces/phenopackets/schema/v2/core/individual"
 import { Phenopacket } from "../../../interfaces/phenopackets/schema/v2/phenopackets";
 import { ICustomFormData } from "../../../types";
 
+type ResolverData = {
+  phenoPacket: Partial<Phenopacket>;
+  formData: ICustomFormData;
+  formDataKey?: string;
+  phenoPacketKey?: string;
+};
+
 export const calculateAge = (
   fromDate: Date | undefined,
   toDate: Date | undefined,
@@ -56,12 +63,9 @@ export function getSex(sex?: Sex) {
   }
 }
 
-type ResolverData = {
-  phenoPacket: Partial<Phenopacket>;
-  formData: ICustomFormData;
-  formDataKey?: string;
-  phenoPacketKey?: string;
-};
+function getCustomFormData(formData: ICustomFormData, key: string) {
+  return formData[key];
+}
 
 export const dynamicResolvers = {
   age: (context: ResolverData) =>
@@ -104,5 +108,25 @@ export const dynamicResolvers = {
     return hpoTerm?.type?.id;
   },
   customFormDataResolver: (context: ResolverData) =>
-    context.formData[context.formDataKey!],
+    getCustomFormData(context.formData, context.formDataKey!),
+  previousGeneticInvestigations: (context: ResolverData) => {
+    const resultSet = {
+      "Array results": getCustomFormData(context.formData, "arrayResults"),
+      "Fish results": getCustomFormData(context.formData, "arrayFishResults"),
+      "RNA-seq results": getCustomFormData(context.formData, "rnaSeqResults"),
+      "Methylation results": getCustomFormData(
+        context.formData,
+        "methylationResults"
+      ),
+    };
+    const result = Object.entries(resultSet)
+      .reduce((acc: string[], [key, value]) => {
+        if (value) {
+          acc.push(`${key}: ${value}`);
+        }
+        return acc;
+      }, [])
+      .join(", ");
+    return result || "No Data";
+  },
 };
