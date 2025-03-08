@@ -924,8 +924,54 @@ export const config: Config = {
           type: "textbox",
           key: "previousGeneticInvestigationsFindings",
         },
+        ". ",
+      ],
+    },
+    {
+      text: "Overall clinical picture",
+      content: [
+        "Currently, the patient receives ",
+        {
+          type: "dropdown",
+          options: ["no medication", "the following medication(s) and therapy"],
+          key: "receiveMedication",
+        },
+        " ",
+        {
+          type: "textbox",
+          key: "prescription",
+        },
         ".",
-        "(fetch results fields from Previous genetic investigations) (Free text)",
+      ],
+    },
+    {
+      text: "",
+      content: [
+        "In summary, the patient has a ",
+        {
+          type: "dropdown",
+          options: ["stable", "progressive"],
+          key: "patientProgress",
+        },
+        " condition that remains undiagnosed.",
+        {
+          type: "lineBreak",
+        },
+        "The patient has seen the following specialists: ",
+        {
+          type: "textbox",
+          key: "patientSpecialists",
+        },
+        ".",
+        {
+          type: "lineBreak",
+        },
+        "Differential diagnoses that have been considered in the patient are ",
+        {
+          type: "textbox",
+          key: "patientDifferentialDiagnoses",
+        },
+        ".",
       ],
     },
   ],
