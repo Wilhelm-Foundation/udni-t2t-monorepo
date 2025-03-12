@@ -83,6 +83,10 @@ export interface PhenopacketDate {
 export interface DropdownControl {
   type: "dropdown";
   options: string[];
+  preselected?: (
+    phenoPacket: Partial<Phenopacket>,
+    formData: ICustomFormData
+  ) => string;
   key: string;
 }
 

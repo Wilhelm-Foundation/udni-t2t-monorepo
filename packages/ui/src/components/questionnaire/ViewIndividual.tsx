@@ -1,6 +1,5 @@
 import {
   Individual,
-  Sex,
   VitalStatus_Status,
 } from "../../interfaces/phenopackets/schema/v2/core/individual";
 import { ICustomFormData } from "../../types";

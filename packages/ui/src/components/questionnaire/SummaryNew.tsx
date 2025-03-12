@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 
 import { AppContext } from "../../context/AppContext";
@@ -13,7 +13,7 @@ interface IProps {
 
 export default function SummaryNew({ phenoPacket, customFormData }: IProps) {
   const {
-    state: { tip2toeForm, summaryForm: config },
+    state: { summaryForm: config },
     dispatch,
   } = useContext(AppContext);
 
@@ -27,10 +27,23 @@ export default function SummaryNew({ phenoPacket, customFormData }: IProps) {
   const renderControl = (control: Control) => {
     switch (control.type) {
       case "dropdown":
+        const preselectedValue =
+          customFormData![control.key] ||
+          control.preselected?.(phenoPacket, customFormData!) ||
+          "";
+        if (
+          preselectedValue != "" &&
+          preselectedValue != customFormData![control.key] &&
+          !customFormData![control.key]
+        ) {
+          //call only when user hasnot selected anything and other source has some value
+          //give priority to user selection
+          handleChange(control.key, preselectedValue);
+        }
         return (
           <select
             className="py-2 rounded border border-gray-300 shadow-sm focus:border-udni-teal focus:ring-4 focus:outline-none focus:ring-udni-teal-100"
-            value={customFormData![control.key] || ""}
+            value={preselectedValue}
             onChange={(e) => handleChange(control.key, e.target.value)}
           >
             <option value="">Select</option>
@@ -84,9 +97,7 @@ export default function SummaryNew({ phenoPacket, customFormData }: IProps) {
         return (
           <span key={index}>
             <NavLink
-              className={({ isActive }) =>
-                ` items-center rounded-md text-udni-teal`
-              }
+              className={() => ` items-center rounded-md text-udni-teal`}
               to={`/questionnaire/${item.source}`}
             >
               {resolveDynamicPlaceholder(item) || "No Data"}

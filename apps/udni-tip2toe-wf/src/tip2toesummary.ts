@@ -1,4 +1,5 @@
-import { Config } from "@repo/ui/types";
+import { Config, ICustomFormData } from "@repo/ui/types";
+import { Phenopacket } from "@repo/ui/phenopackets";
 
 const SD_VALUES = [
   "≤ -3",
@@ -168,6 +169,48 @@ export const config: Config = {
           type: "dropdown",
           options: [...SD_VALUES],
           key: "lastVisitWeightSd",
+          preselected: (
+            phenoPacket: Partial<Phenopacket>,
+            formData: ICustomFormData
+          ): string => {
+            if (formData["birthWeight"]) {
+              const birthWeight = +formData["birthWeight"] || 0;
+              const ranges = [
+                { min: 0, max: 2000, result: "1" },
+                { min: 2001, max: 2500, result: "2" },
+                { min: 2501, max: 2900, result: "3" },
+                { min: 2901, max: 4000, result: "4" },
+                { min: 4001, max: 4500, result: "5" },
+                { min: 4501, max: 5000, result: "6" },
+                { min: 5001, max: Number.POSITIVE_INFINITY, result: "7" },
+              ];
+
+              const matchedRange = ranges.find(
+                (range) => birthWeight >= range.min && birthWeight <= range.max
+              );
+
+              return matchedRange?.result || "0";
+            }
+
+            //             ≤ -3 SD: ≤2000g (Severely Low Birth Weight)
+            // -2 to -3 SD: 2001–2500g (Very Low Birth Weight)
+            // -1 to -2 SD: 2501–2900g (Low Birth Weight)
+            // -1 to +1 SD: 2901–4000g (Normal Birth Weight)
+            // +1 to +2 SD: 4001–4500g (Large for Gestational Age - LGA)
+            // +2 to +3 SD: 4501–5000g (Very Large for Gestational Age - LGA)
+            // ≥ +3 SD: ≥5001g (Extremely Large for Gestational Age - LGA)
+
+            const hpoTerm = phenoPacket.phenotypicFeatures?.find(
+              (f) =>
+                f.description === "cognition" &&
+                f.excluded === false &&
+                f.type?.id === "HP:0001263"
+            );
+            if (hpoTerm) {
+              return "2";
+            }
+            return "0";
+          },
         },
         " SD], birth length ",
         {
@@ -270,6 +313,18 @@ export const config: Config = {
           type: "dropdown",
           options: ["normal", "delayed"],
           key: "developmentalMilestones",
+          preselected: (phenoPacket: Partial<Phenopacket>): string => {
+            const hpoTerm = phenoPacket.phenotypicFeatures?.find(
+              (f) =>
+                f.description === "cognition" &&
+                f.excluded === false &&
+                f.type?.id === "HP:0001263"
+            );
+            if (hpoTerm) {
+              return "2";
+            }
+            return "0";
+          },
         },
         "The patient could sit unsupported at ",
         {
@@ -456,8 +511,20 @@ export const config: Config = {
         "The patient ",
         {
           type: "dropdown",
-          options: ["has", "has not"],
+          options: ["has not", "has"],
           key: "seizuresDeveloped",
+          preselected: (phenoPacket: Partial<Phenopacket>): string => {
+            const hpoTerm = phenoPacket.phenotypicFeatures?.find(
+              (f) =>
+                f.description === "seizures" &&
+                f.excluded === false &&
+                f.type?.id === "HP:0001250"
+            );
+            if (hpoTerm) {
+              return "2";
+            }
+            return "0";
+          },
         },
         " developed seizures. The seizures age of onset was ",
         {
@@ -488,6 +555,18 @@ export const config: Config = {
           type: "dropdown",
           options: ["normal", "abnormal", "not performed"],
           key: "eegExamination",
+          preselected: (phenoPacket: Partial<Phenopacket>): string => {
+            const hpoTerm = phenoPacket.phenotypicFeatures?.find(
+              (f) =>
+                f.description === "seizures" &&
+                f.excluded === false &&
+                f.type?.id === "HP:0002353"
+            );
+            if (hpoTerm) {
+              return "2";
+            }
+            return "0";
+          },
         },
         " with findings of ",
         {
@@ -816,6 +895,18 @@ export const config: Config = {
           type: "dropdown",
           options: ["normal", "abnormal"],
           key: "mriResult",
+          preselected: (phenoPacket: Partial<Phenopacket>): string => {
+            const hpoTerm = phenoPacket.phenotypicFeatures?.find(
+              (f) =>
+                f.description === "central-nervous-system" &&
+                f.excluded === false &&
+                f.type?.id === "HP:0012443"
+            );
+            if (hpoTerm) {
+              return "2";
+            }
+            return "0";
+          },
         },
         " results: ",
         {
