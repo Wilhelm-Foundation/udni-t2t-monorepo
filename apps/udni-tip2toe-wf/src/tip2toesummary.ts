@@ -173,8 +173,9 @@ export const config: Config = {
             phenoPacket: Partial<Phenopacket>,
             formData: ICustomFormData
           ): string => {
-            if (formData["birthWeight"]) {
-              const birthWeight = +formData["birthWeight"] || 0;
+            const birthWeightData = formData["birthWeight"];
+            if (birthWeightData) {
+              const birthWeight = +birthWeightData || 0;
               const ranges = [
                 { min: 0, max: 2000, result: "1" },
                 { min: 2001, max: 2500, result: "2" },
@@ -189,27 +190,9 @@ export const config: Config = {
                 (range) => birthWeight >= range.min && birthWeight <= range.max
               );
 
-              return matchedRange?.result || "0";
+              return matchedRange?.result || "";
             }
-
-            //             ≤ -3 SD: ≤2000g (Severely Low Birth Weight)
-            // -2 to -3 SD: 2001–2500g (Very Low Birth Weight)
-            // -1 to -2 SD: 2501–2900g (Low Birth Weight)
-            // -1 to +1 SD: 2901–4000g (Normal Birth Weight)
-            // +1 to +2 SD: 4001–4500g (Large for Gestational Age - LGA)
-            // +2 to +3 SD: 4501–5000g (Very Large for Gestational Age - LGA)
-            // ≥ +3 SD: ≥5001g (Extremely Large for Gestational Age - LGA)
-
-            const hpoTerm = phenoPacket.phenotypicFeatures?.find(
-              (f) =>
-                f.description === "cognition" &&
-                f.excluded === false &&
-                f.type?.id === "HP:0001263"
-            );
-            if (hpoTerm) {
-              return "2";
-            }
-            return "0";
+            return "";
           },
         },
         " SD], birth length ",
@@ -224,6 +207,32 @@ export const config: Config = {
           type: "dropdown",
           options: [...SD_VALUES],
           key: "lastVisitLengthSd",
+          preselected: (
+            phenoPacket: Partial<Phenopacket>,
+            formData: ICustomFormData
+          ): string => {
+            const birthLengthData = formData["birthLength"];
+            if (birthLengthData) {
+              const birthLength = +birthLengthData || 0;
+
+              const ranges = [
+                { min: 0, max: 44, result: "1" },
+                { min: 44.1, max: 46, result: "2" },
+                { min: 46.1, max: 48, result: "3" },
+                { min: 48.1, max: 52, result: "4" },
+                { min: 52.1, max: 54, result: "5" },
+                { min: 54.1, max: 56, result: "6" },
+                { min: 56, max: Number.POSITIVE_INFINITY, result: "7" },
+              ];
+
+              const matchedRange = ranges.find(
+                (range) => birthLength >= range.min && birthLength <= range.max
+              );
+
+              return matchedRange?.result || "";
+            }
+            return "";
+          },
         },
         " SD], and head circumference ",
         {
@@ -237,6 +246,33 @@ export const config: Config = {
           type: "dropdown",
           options: [...SD_VALUES],
           key: "lastVisitHeadCircumferenceSd",
+          preselected: (
+            phenoPacket: Partial<Phenopacket>,
+            formData: ICustomFormData
+          ): string => {
+            const headCircumferenceData = formData["headCircumference"];
+            if (headCircumferenceData) {
+              const headCircumference = +headCircumferenceData || 0;
+              const ranges = [
+                { min: 0, max: 30, result: "1" },
+                { min: 30.1, max: 31.5, result: "2" },
+                { min: 31.6, max: 32.9, result: "3" },
+                { min: 33, max: 37, result: "4" },
+                { min: 37.1, max: 38.5, result: "5" },
+                { min: 38.6, max: 40, result: "6" },
+                { min: 40.1, max: Number.POSITIVE_INFINITY, result: "7" },
+              ];
+
+              const matchedRange = ranges.find(
+                (range) =>
+                  headCircumference >= range.min &&
+                  headCircumference <= range.max
+              );
+
+              return matchedRange?.result || "";
+            }
+            return "";
+          },
         },
         " SD]. Apgar scores were (",
         {
