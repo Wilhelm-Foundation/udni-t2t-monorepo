@@ -28,8 +28,8 @@ function App() {
             <Route path="overview" element={<Questionnaire />} />
             <Route path="individual" element={<EditIndividual />} />
             <Route path=":slug" element={<FormSectionPage />} />
-            <Route path="summary" element={<SummaryPage />} />
-            <Route path="summarynew" element={<SummaryPageNew />} />
+            {/* <Route path="summary" element={<SummaryPage />} /> */}
+            <Route path="summary" element={<SummaryPageNew />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -938,7 +938,6 @@ Worsening?)
     slug: "cancermalignancy-benign-tumor",
   },
   { title: "Summary", slug: "summary" },
-  { title: "SummaryNew", slug: "summarynew" },
 ];
 
 const tip2toeForm: IForm = {
