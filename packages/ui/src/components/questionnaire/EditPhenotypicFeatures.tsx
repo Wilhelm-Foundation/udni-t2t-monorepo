@@ -195,20 +195,18 @@ export default function EditPhenotypicFeatures({ slug, ontologies }: IProps) {
                   .map((pf, i) => {
                     if (!pf.type) return null;
                     return (
-                      <>
-                        <EditPhenotypicFeature
-                          key={`et-${pf.type?.id}-${i}`}
-                          ontology={pf.type}
-                          value={getYesNoUnknown(
-                            state?.phenoPacket?.phenotypicFeatures?.find(
-                              (x) => x.type?.id === pf.type?.id
-                            )
-                          )}
-                          onChange={(value) => {
-                            if (pf.type) save(pf.type, value);
-                          }}
-                        />
-                      </>
+                      <EditPhenotypicFeature
+                        key={`et-${pf.type?.id}-${i}`}
+                        ontology={pf.type}
+                        value={getYesNoUnknown(
+                          state?.phenoPacket?.phenotypicFeatures?.find(
+                            (x) => x.type?.id === pf.type?.id
+                          )
+                        )}
+                        onChange={(value) => {
+                          if (pf.type) save(pf.type, value);
+                        }}
+                      />
                     );
                   })}
               </div>
