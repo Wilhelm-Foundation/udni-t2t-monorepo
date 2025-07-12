@@ -29,7 +29,10 @@ export default function SummaryNew({ phenoPacket, customFormData }: IProps) {
       case "dropdown":
         const preselectedValue =
           customFormData![control.key] ||
-          control.preselected?.(phenoPacket, customFormData!) ||
+          control.preselected?.({
+            formData: customFormData!,
+            phenoPacket: phenoPacket,
+          }) ||
           "";
         if (
           preselectedValue != "" &&

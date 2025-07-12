@@ -80,13 +80,15 @@ export interface PhenopacketDate {
   seconds: number;
 }
 
+export interface IPreselectArguments {
+  phenoPacket: Partial<Phenopacket>;
+  formData: ICustomFormData;
+}
+
 export interface DropdownControl {
   type: "dropdown";
   options: string[];
-  preselected?: (
-    phenoPacket: Partial<Phenopacket>,
-    formData: ICustomFormData
-  ) => string;
+  preselected?: (args: IPreselectArguments) => string;
   key: string;
 }
 

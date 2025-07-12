@@ -1,5 +1,4 @@
-import { Config, ICustomFormData } from "@repo/ui/types";
-import { Phenopacket } from "@repo/ui/phenopackets";
+import { Config, IPreselectArguments } from "@repo/ui/types";
 
 const SD_VALUES = [
   "≤ -3",
@@ -169,10 +168,7 @@ export const config: Config = {
           type: "dropdown",
           options: [...SD_VALUES],
           key: "lastVisitWeightSd",
-          preselected: (
-            phenoPacket: Partial<Phenopacket>,
-            formData: ICustomFormData
-          ): string => {
+          preselected: ({ formData }: IPreselectArguments): string => {
             const birthWeightData = formData["birthWeight"];
             if (birthWeightData) {
               const birthWeight = +birthWeightData || 0;
@@ -207,10 +203,7 @@ export const config: Config = {
           type: "dropdown",
           options: [...SD_VALUES],
           key: "lastVisitLengthSd",
-          preselected: (
-            phenoPacket: Partial<Phenopacket>,
-            formData: ICustomFormData
-          ): string => {
+          preselected: ({ formData }: IPreselectArguments): string => {
             const birthLengthData = formData["birthLength"];
             if (birthLengthData) {
               const birthLength = +birthLengthData || 0;
@@ -246,10 +239,7 @@ export const config: Config = {
           type: "dropdown",
           options: [...SD_VALUES],
           key: "lastVisitHeadCircumferenceSd",
-          preselected: (
-            phenoPacket: Partial<Phenopacket>,
-            formData: ICustomFormData
-          ): string => {
+          preselected: ({ formData }: IPreselectArguments): string => {
             const headCircumferenceData = formData["headCircumference"];
             if (headCircumferenceData) {
               const headCircumference = +headCircumferenceData || 0;
@@ -349,7 +339,7 @@ export const config: Config = {
           type: "dropdown",
           options: ["normal", "delayed"],
           key: "developmentalMilestones",
-          preselected: (phenoPacket: Partial<Phenopacket>): string => {
+          preselected: ({ phenoPacket }: IPreselectArguments): string => {
             const hpoTerm = phenoPacket.phenotypicFeatures?.find(
               (f) =>
                 f.description === "cognition" &&
@@ -549,7 +539,7 @@ export const config: Config = {
           type: "dropdown",
           options: ["has not", "has"],
           key: "seizuresDeveloped",
-          preselected: (phenoPacket: Partial<Phenopacket>): string => {
+          preselected: ({ phenoPacket }: IPreselectArguments): string => {
             const hpoTerm = phenoPacket.phenotypicFeatures?.find(
               (f) =>
                 f.description === "seizures" &&
@@ -591,7 +581,7 @@ export const config: Config = {
           type: "dropdown",
           options: ["normal", "abnormal", "not performed"],
           key: "eegExamination",
-          preselected: (phenoPacket: Partial<Phenopacket>): string => {
+          preselected: ({ phenoPacket }: IPreselectArguments): string => {
             const hpoTerm = phenoPacket.phenotypicFeatures?.find(
               (f) =>
                 f.description === "seizures" &&
@@ -931,7 +921,7 @@ export const config: Config = {
           type: "dropdown",
           options: ["normal", "abnormal"],
           key: "mriResult",
-          preselected: (phenoPacket: Partial<Phenopacket>): string => {
+          preselected: ({ phenoPacket }: IPreselectArguments): string => {
             const hpoTerm = phenoPacket.phenotypicFeatures?.find(
               (f) =>
                 f.description === "central-nervous-system" &&

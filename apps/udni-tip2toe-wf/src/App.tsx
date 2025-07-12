@@ -7,7 +7,6 @@ import QuestionnaireLayout from "@repo/ui/questionnaireLayout";
 import Questionnaire from "@repo/ui/questionnaireIndex";
 import FormSectionPage from "@repo/ui/questionnaireFormSectionPage";
 import { AppProvider } from "@repo/ui/appContext";
-import SummaryPage from "@repo/ui/questionnaireSummaryPage";
 import SummaryPageNew from "@repo/ui/questionnaireSummaryPageNew";
 import tip2toeForm from "./tip2toeform";
 import { config } from "./tip2toesummary";

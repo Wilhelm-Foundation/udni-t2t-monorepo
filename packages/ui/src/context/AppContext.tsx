@@ -182,7 +182,7 @@ interface ProviderProps {
   children: React.ReactNode;
   apiUrl: string;
   tip2toeForm: IForm;
-  summaryForm: Config;
+  summaryForm?: Config;
 }
 
 function AppProvider({
