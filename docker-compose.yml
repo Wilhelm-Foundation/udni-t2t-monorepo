@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  dev-container:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - .:/workspace:cached
+      - pnpm_store:/home/node/.local/share/pnpm
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    stdin_open: true
+    tty: true
+    command: sleep infinity
+
+volumes:
+  pnpm_store:

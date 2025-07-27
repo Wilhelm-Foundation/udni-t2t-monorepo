@@ -1,0 +1,46 @@
+{
+  "name": "Tip2Toe Dev Container",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "dev-container",
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "stopCompose",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-typescript-next",
+        "dbaeumer.vscode-eslint",
+        "formulahendry.auto-rename-tag",
+        "ms-vscode.vscode-json",
+        "ms-azuretools.vscode-docker"
+      ],
+      "settings": {
+        "typescript.preferences.preferTypeOnlyAutoImports": true,
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "tailwindCSS.includeLanguages": {
+          "plaintext": "html"
+        }
+      }
+    }
+  },
+  "postStartCommand": "pnpm install && pnpm build",
+  "mounts": [
+    {
+      "source": "${localEnv:HOME}/.local/share/pnpm",
+      "target": "/home/node/.local/share/pnpm",
+      "type": "bind"
+    },
+    {
+      "source": "${localEnv:HOME}/.gitconfig",
+      "target": "/home/node/.gitconfig",
+      "type": "bind"
+    }
+  ],
+  "remoteUser": "node"
+}
