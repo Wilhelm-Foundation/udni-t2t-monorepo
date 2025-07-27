@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
 import ApiStatus from "../../ApiStatus";
 import LanguageSelector from "./LanguageSelector";
+import { useContext } from "react";
+import { AppContext } from "../../../context/AppContext";
 
 export default function NavBar() {
+  const {
+    state: { translationSupport },
+  } = useContext(AppContext);
+
   return (
     <header className="bg-udni-teal w-full sticky top-0 z-20 h-16 flex items-center print:hidden">
       <div className="container max-w-6xl p-4 mx-auto flex justify-between">
@@ -13,7 +19,7 @@ export default function NavBar() {
           <Link to="/help" className="text-white">
             Help
           </Link>
-          <LanguageSelector></LanguageSelector>
+          {translationSupport && <LanguageSelector></LanguageSelector>}
         </div>
         <div>
           <ApiStatus />

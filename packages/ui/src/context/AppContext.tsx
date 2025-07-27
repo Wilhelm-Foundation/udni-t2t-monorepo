@@ -45,6 +45,7 @@ export interface IAppContext {
   VITE_APIURL?: string;
   tip2toeForm?: IForm;
   summaryForm?: Config;
+  translationSupport?: boolean;
 }
 
 const emptyState: IAppContext = {
@@ -54,6 +55,7 @@ const emptyState: IAppContext = {
   VITE_APIURL: "",
   tip2toeForm: {} as IForm,
   summaryForm: {} as Config,
+  translationSupport: false,
 };
 
 let initialState: IAppContext = {
@@ -183,6 +185,7 @@ interface ProviderProps {
   apiUrl: string;
   tip2toeForm: IForm;
   summaryForm?: Config;
+  translationSupport?: boolean;
 }
 
 function AppProvider({
@@ -190,12 +193,14 @@ function AppProvider({
   tip2toeForm,
   apiUrl,
   summaryForm,
+  translationSupport,
 }: ProviderProps) {
   initialState = {
     ...initialState,
     tip2toeForm,
     VITE_APIURL: apiUrl,
     summaryForm,
+    translationSupport,
   };
   const [state, dispatch] = useReducer(appReducer, initialState);
 

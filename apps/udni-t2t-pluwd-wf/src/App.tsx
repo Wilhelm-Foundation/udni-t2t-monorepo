@@ -12,7 +12,11 @@ import tip2toeForm from "./tip2toeform";
 
 function App() {
   return (
-    <AppProvider tip2toeForm={tip2toeForm} apiUrl={import.meta.env.VITE_APIURL}>
+    <AppProvider
+      tip2toeForm={tip2toeForm}
+      apiUrl={import.meta.env.VITE_APIURL}
+      translationSupport={true}
+    >
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
