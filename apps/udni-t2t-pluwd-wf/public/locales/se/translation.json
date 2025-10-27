@@ -1,6 +1,25 @@
 {
   "global": {
     "help": "Hjälp",
-    "questionnaire": "Frågeformulär"
+    "questionnaire": "Frågeformulär",
+    "yes": "ja",
+    "no": "Inga",
+    "unknown": "Ej undersökt"
+  },
+  "apiStatus": {
+    "apiConnecting": "ansluter till API",
+    "apiOffline": "API offline",
+    "apiOnline": "API online"
+  },
+  "terms": {
+    "HP_0001562": {
+      "main": "Oligohydramnios",
+      "synonyms": [
+        { "text": "Låga nivåer av fostervätska", "weight": 1 },
+        { "text": "Minskat fostervattenindex", "weight": 2 },
+        { "text": "Maternal oligohydramnios", "weight": 3 }
+      ],
+      "clinical": "Oligohydramnios"
+    }
   }
 }

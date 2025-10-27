@@ -3,8 +3,10 @@ import ApiStatus from "../../ApiStatus";
 import LanguageSelector from "./LanguageSelector";
 import { useContext } from "react";
 import { AppContext } from "../../../context/AppContext";
+import { useTranslation } from "react-i18next";
 
 export default function NavBar() {
+  const { t } = useTranslation();
   const {
     state: { translationSupport },
   } = useContext(AppContext);
@@ -17,7 +19,7 @@ export default function NavBar() {
             UDNI tip2toe Questionnaire
           </Link>
           <Link to="/help" className="text-white">
-            Help
+            {t("global.help")}
           </Link>
           {translationSupport && <LanguageSelector></LanguageSelector>}
         </div>

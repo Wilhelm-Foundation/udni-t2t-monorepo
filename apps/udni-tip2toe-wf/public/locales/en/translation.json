@@ -1,6 +1,14 @@
 {
   "global": {
     "help": "Help",
-    "questionnaire": "Questionnaire"
+    "questionnaire": "Questionnaire",
+    "yes": "Yes",
+    "no": "No",
+    "unknown": "Not investigated"
+  },
+  "apiStatus": {
+    "apiConnecting": "Connecting to API",
+    "apiOffline": "API offline",
+    "apiOnline": "API online"
   }
 }

@@ -1,8 +1,11 @@
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 import { useContext, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+
 import { AppContext } from "../context/AppContext";
 
 export default function ApiStatus() {
+  const { t } = useTranslation();
   const {
     state: { VITE_APIURL },
   } = useContext(AppContext);
@@ -33,19 +36,20 @@ export default function ApiStatus() {
     case "online":
       return (
         <div className="bg-white flex flex-row items-center justify-center text-green-700 p-1 px-2 rounded">
-          <CheckBadgeIcon className=" w-5 h-5 mr-1" /> <span>API online</span>
+          <CheckBadgeIcon className=" w-5 h-5 mr-1" />{" "}
+          <span>{t("apiStatus.apiOnline")}</span>
         </div>
       );
     case "offline":
       return (
         <div className="bg-red-700 text-white p-1 px-2 rounded">
-          API offline
+          {t("apiStatus.apiOffline")}
         </div>
       );
     default:
       return (
         <div className="bg-yellow-500 text-white p-1 px-2 rounded">
-          Connecting to API..
+          {`${t("apiStatus.apiConnecting")}..`}
         </div>
       );
   }

@@ -1,6 +1,25 @@
 {
   "global": {
     "help": "Help",
-    "questionnaire": "Questionnaire"
+    "questionnaire": "Questionnaire",
+    "yes": "Yes",
+    "no": "No",
+    "unknown": "Not investigated"
+  },
+  "apiStatus": {
+    "apiConnecting": "Connecting to API",
+    "apiOffline": "API offline",
+    "apiOnline": "API online"
+  },
+  "terms": {
+    "HP_0001562": {
+      "main": "Oligohydramnios",
+      "synonyms": [
+        { "text": "Low levels of amniotic fluid", "weight": 1 },
+        { "text": "Decreased amniotic fluid index", "weight": 2 },
+        { "text": "Maternal oligohydramnios", "weight": 3 }
+      ],
+      "clinical": "Oligohydramnios"
+    }
   }
 }
