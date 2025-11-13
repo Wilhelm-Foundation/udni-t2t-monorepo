@@ -4,7 +4,10 @@
     "questionnaire": "Questionnaire",
     "yes": "Yes",
     "no": "No",
-    "unknown": "Not investigated"
+    "unknown": "Not investigated",
+    "copied": "Copied",
+    "normal": "Normal",
+    "abnormal": "Abnormal"
   },
   "apiStatus": {
     "apiConnecting": "Connecting to API",
@@ -20,6 +23,15 @@
         { "text": "Maternal oligohydramnios", "weight": 3 }
       ],
       "clinical": "Oligohydramnios"
+    },
+    "HP_0001561": {
+      "main": "Polyhydramnios",
+      "synonyms": [
+        { "text": "High levels of amniotic fluid", "weight": 1 },
+        { "text": "Hydramnios", "weight": 2 },
+        { "text": "Increased amniotic fluid index", "weight": 3 }
+      ],
+      "clinical": "Polyhydramnios"
     }
   }
 }

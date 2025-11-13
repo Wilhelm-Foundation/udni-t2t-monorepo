@@ -4,7 +4,9 @@
     "questionnaire": "Questionnaire",
     "yes": "Yes",
     "no": "No",
-    "unknown": "Not investigated"
+    "unknown": "Not investigated",
+    "normal": "Normal",
+    "abnormal": "Abnormal"
   },
   "apiStatus": {
     "apiConnecting": "Connecting to API",

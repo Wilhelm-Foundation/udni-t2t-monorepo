@@ -10,6 +10,7 @@ import EditPhenotypicFeature from "./form/EditPhenotypicFeature";
 import NavButtons from "./form/NavButtons";
 import { SuggestedPhenotypicFeatures } from "./SuggestedPhenotypicFeatures";
 import SuggestedFeature from "../../interfaces/suggested-feature";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   slug: string;
@@ -17,6 +18,7 @@ interface IProps {
 }
 export default function EditPhenotypicFeatures({ slug, ontologies }: IProps) {
   const { state, dispatch } = useContext(AppContext);
+  const { t } = useTranslation();
   const save = async (
     ontology: OntologyClass,
     value: YesNoUnknown,
@@ -145,19 +147,19 @@ export default function EditPhenotypicFeatures({ slug, ontologies }: IProps) {
           className="flex items-center p-2 hover:bg-white hover:text-gray-700"
           onClick={() => setAllValues("no")}
         >
-          Normal
+          {t("global.normal")}
         </button>
         <button
           className="flex items-center p-2 border-l hover:bg-white hover:text-gray-700"
           onClick={() => setAllValues("unknown")}
         >
-          Abnormal
+          {t("global.abnormal")}
         </button>
         <button
           className="flex items-center p-2 border-l hover:bg-white hover:text-gray-700"
           onClick={() => setAllValues("unknown")}
         >
-          Not investigated
+          {t("global.unknown")}
         </button>
         {/* <button className="btn ml-auto hidden md:flex" onClick={onNext}>
       Next <ChevronRightIcon className="w-4 ml-1" />

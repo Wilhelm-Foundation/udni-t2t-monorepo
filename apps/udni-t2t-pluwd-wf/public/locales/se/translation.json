@@ -4,7 +4,10 @@
     "questionnaire": "Frågeformulär",
     "yes": "ja",
     "no": "Inga",
-    "unknown": "Ej undersökt"
+    "unknown": "Ej undersökt",
+    "copied": "Kopierade",
+    "normal": "Normal",
+    "abnormal": "Onormal"
   },
   "apiStatus": {
     "apiConnecting": "ansluter till API",
@@ -20,6 +23,15 @@
         { "text": "Maternal oligohydramnios", "weight": 3 }
       ],
       "clinical": "Oligohydramnios"
+    },
+    "HP_0001561": {
+      "main": "Polyhydramnios",
+      "synonyms": [
+        { "text": "Höga nivåer av fostervatten", "weight": 1 },
+        { "text": "Hydramnios", "weight": 2 },
+        { "text": "Ökat fostervattenindex", "weight": 3 }
+      ],
+      "clinical": "Polyhydramnios"
     }
   }
 }
