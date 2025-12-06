@@ -7,7 +7,8 @@
     "unknown": "Not investigated",
     "copied": "Copied",
     "normal": "Normal",
-    "abnormal": "Abnormal"
+    "abnormal": "Abnormal",
+    "synonyms": "Synonyms"
   },
   "apiStatus": {
     "apiConnecting": "Connecting to API",
@@ -32,6 +33,121 @@
         { "text": "Increased amniotic fluid index", "weight": 3 }
       ],
       "clinical": "Polyhydramnios"
+    },
+    "HP_0011436": {
+      "main": "Abnormal maternal serum screening",
+      "synonyms": [],
+      "clinical": "Abnormal maternal serum screening"
+    },
+    "HP_0034058": {
+      "main": "Abnormal fetal morphology",
+      "synonyms": [
+        { "text": "Structural fetal anomaly", "weight": 1 },
+        { "text": "Structural foetal anomaly", "weight": 2 }
+      ],
+      "clinical": "Abnormal fetal morphology"
+    },
+    "HP_0011425": {
+      "main": "Fetal ultrasound soft marker",
+      "synonyms": [{ "text": "Foetal ultrasound soft marker", "weight": 1 }],
+      "clinical": "Fetal ultrasound soft marker"
+    },
+    "HP_0034059": {
+      "main": "Abnormal fetal physiology",
+      "synonyms": [
+        { "text": "Functional fetal anomaly", "weight": 1 },
+        { "text": "Functional foetal anomaly", "weight": 2 }
+      ],
+      "clinical": "Abnormal fetal physiology"
+    },
+    "HP_0001511": {
+      "main": "Intrauterine growth retardation",
+      "synonyms": [
+        { "text": "Prenatal growth deficiency", "weight": 1 },
+        { "text": "Prenatal growth retardation", "weight": 2 }
+      ],
+      "clinical": "Intrauterine growth retardation"
+    },
+    "HP_0003517": {
+      "main": "Fetal overgrowth",
+      "synonyms": [
+        { "text": "Fetal overgrowth", "weight": 1 },
+        { "text": "Foetal overgrowth", "weight": 2 }
+      ],
+      "clinical": "Fetal overgrowth"
+    },
+    "HP_0001558": {
+      "main": "Decreased fetal movement",
+      "synonyms": [
+        { "text": "Less than 10 fetal movements in 12 hours", "weight": 1 },
+        { "text": "Less than 10 foetal movements in 12 hours", "weight": 2 },
+        { "text": "Reduced fetal movement", "weight": 3 }
+      ],
+      "clinical": "Decreased fetal movement"
+    },
+    "HP_0010519": {
+      "main": "Increased fetal movement",
+      "synonyms": [
+        { "text": "Fetal hyperkinesia", "weight": 1 },
+        { "text": "Increased foetal movement", "weight": 2 }
+      ],
+      "clinical": "Increased fetal movement"
+    },
+    "HP_0001194": {
+      "main": "Abnormalities of placenta or umbilical cord",
+      "synonyms": [
+        { "text": "Abnormalities of placenta or umbilical cord", "weight": 1 }
+      ],
+      "clinical": "Abnormalities of placenta or umbilical cord"
+    },
+    "HP_0002686": {
+      "main": "Prenatal maternal (health) abnormality (Describe in Clinical summary above)",
+      "synonyms": [
+        { "text": "Maternal health problem", "weight": 1 },
+        { "text": "Prenatal maternal abnormality", "weight": 2 }
+      ],
+      "clinical": "Prenatal maternal (health) abnormality (Describe in Clinical summary above)"
+    },
+    "HP_0030246": {
+      "main": "Maternal first trimester fever",
+      "synonyms": [],
+      "clinical": "Maternal first trimester fever"
+    },
+    "HP_0009800": {
+      "main": "Maternal diabetes",
+      "synonyms": [
+        { "text": "gestational diabetes", "weight": 1 },
+        { "text": "Maternal diabetes", "weight": 2 }
+      ],
+      "clinical": "Maternal diabetes"
+    },
+    "HP_0011437": {
+      "main": "Maternal autoimmune disease (Describe in Clinical summary above)",
+      "synonyms": [],
+      "clinical": "Maternal autoimmune disease (Describe in Clinical summary above)"
+    },
+    "HP_0100622": {
+      "main": "Maternal seizure (during pregnancy)",
+      "synonyms": [{ "text": "Maternal seizures", "weight": 1 }],
+      "clinical": "Maternal seizure (during pregnancy)"
+    },
+    "HP_0011438": {
+      "main": "Maternal teratogenic exposure (Describe in Clinical summary above)",
+      "synonyms": [],
+      "clinical": "Maternal teratogenic exposure (Describe in Clinical summary above)"
+    },
+    "HP_0100603": {
+      "main": "Toxemia of pregnancy",
+      "synonyms": [
+        { "text": "Hypertensive disorder of pregnancy", "weight": 1 },
+        { "text": "Toxaemia of pregnancy", "weight": 2 }
+      ],
+      "clinical": "Toxemia of pregnancy"
+    },
+    "HP_0200067": {
+      "main": "Recurrent spontaneous abortion in previous pregnancies",
+      "synonyms": [{ "text": "Spontaneous abortion, recurrent", "weight": 1 }],
+      "clinical": "Recurrent spontaneous abortion in previous pregnancies"
     }
   }
 }

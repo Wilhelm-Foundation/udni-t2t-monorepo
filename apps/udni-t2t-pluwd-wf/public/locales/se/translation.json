@@ -7,7 +7,8 @@
     "unknown": "Ej undersökt",
     "copied": "Kopierade",
     "normal": "Normal",
-    "abnormal": "Onormal"
+    "abnormal": "Onormal",
+    "synonyms": "Synonymer"
   },
   "apiStatus": {
     "apiConnecting": "ansluter till API",
@@ -32,6 +33,120 @@
         { "text": "Ökat fostervattenindex", "weight": 3 }
       ],
       "clinical": "Polyhydramnios"
+    },
+    "HP_0011436": {
+      "main": "Onormal screening av maternellt serum",
+      "clinical": "Onormal screening av maternellt serum"
+    },
+    "HP_0034058": {
+      "main": "Onormal fostermorfologi",
+      "synonyms": [
+        { "text": "Strukturell fosteravvikelse", "weight": 1 },
+        { "text": "Strukturell fosteravvikelse", "weight": 2 }
+      ],
+      "clinical": "Onormal fostermorfologi"
+    },
+    "HP_0011425": {
+      "main": "Mjukmarkör för fosterultraljud",
+      "synonyms": [{ "text": "Mjukmarkör för fosterultraljud", "weight": 1 }],
+      "clinical": "Mjukmarkör för fosterultraljud"
+    },
+    "HP_0034059": {
+      "main": "Onormal fosterfysiologi",
+      "synonyms": [
+        { "text": "Funktionell fosteranomali", "weight": 1 },
+        { "text": "Funktionell fosteranomali", "weight": 2 }
+      ],
+      "clinical": "Onormal fosterfysiologi"
+    },
+    "HP_0001511": {
+      "main": "Intrauterin tillväxthämning",
+      "synonyms": [
+        { "text": "Prenatal tillväxtbrist", "weight": 1 },
+        { "text": "Prenatal tillväxthämning", "weight": 2 }
+      ],
+      "clinical": "Intrauterin tillväxthämning"
+    },
+    "HP_0003517": {
+      "main": "Fosteröverväxt",
+      "synonyms": [
+        { "text": "Fosteröverväxt", "weight": 1 },
+        { "text": "Fosteröverväxt", "weight": 2 }
+      ],
+      "clinical": "Fosteröverväxt"
+    },
+    "HP_0001558": {
+      "main": "Minskad fosterrörelse",
+      "synonyms": [
+        { "text": "Färre än 10 fosterrörelser på 12 timmar", "weight": 1 },
+        { "text": "Färre än 10 fosterrörelser på 12 timmar", "weight": 2 },
+        { "text": "Reduced fetal movement", "weight": 3 }
+      ],
+      "clinical": "Minskad fosterrörelse"
+    },
+    "HP_0010519": {
+      "main": "Ökad fosterrörelse",
+      "synonyms": [
+        { "text": "Fosterhyperkinesi", "weight": 1 },
+        { "text": "Ökad fosterrörelse", "weight": 2 }
+      ],
+      "clinical": "Ökad fosterrörelse"
+    },
+    "HP_0001194": {
+      "main": "Avvikelser i placentan eller navelsträngen",
+      "synonyms": [
+        { "text": "Avvikelser i placentan eller navelsträngen", "weight": 1 }
+      ],
+      "clinical": "Avvikelser i placentan eller navelsträngen"
+    },
+    "HP_0002686": {
+      "main": "Prenatal hälsoavvikelse hos modern (beskriv i klinisk sammanfattning ovan)",
+      "synonyms": [
+        { "text": "Mödrahälsoproblem", "weight": 1 },
+        { "text": "Prenatal maternell abnormalitet", "weight": 2 }
+      ],
+      "clinical": "Prenatal hälsoavvikelse hos modern (beskriv i klinisk sammanfattning ovan)"
+    },
+    "HP_0030246": {
+      "main": "Feber under första trimestern i modern",
+      "synonyms": [],
+      "clinical": "Feber under första trimestern i modern"
+    },
+    "HP_0009800": {
+      "main": "Maternell diabetes",
+      "synonyms": [
+        { "text": "graviditetsdiabetes", "weight": 1 },
+        { "text": "Maternell diabetes", "weight": 2 }
+      ],
+      "clinical": "Maternell diabetes"
+    },
+    "HP_0011437": {
+      "main": "Maternal autoimmun sjukdom (beskriv i klinisk sammanfattning ovan)",
+      "synonyms": [],
+      "clinical": "Maternal autoimmun sjukdom (beskriv i klinisk sammanfattning ovan)"
+    },
+    "HP_0100622": {
+      "main": "Moderns anfall (under graviditeten)",
+      "synonyms": [{ "text": "Moderns anfall", "weight": 1 }],
+      "clinical": "Moderns anfall (under graviditeten)"
+    },
+    "HP_0011438": {
+      "main": "Maternal teratogen exponering (beskriv i klinisk sammanfattning ovan)",
+      "synonyms": [],
+      "clinical": "Maternal teratogen exponering (beskriv i klinisk sammanfattning ovan)"
+    },
+    "HP_0100603": {
+      "main": "Toxemia of pregnancy",
+      "synonyms": [
+        { "text": "Hypertensiv sjukdom under graviditet", "weight": 1 },
+        { "text": "Graviditetstoxicitet", "weight": 2 }
+      ],
+      "clinical": "Toxemia of pregnancy"
+    },
+    "HP_0200067": {
+      "main": "Återkommande spontanaborter vid tidigare graviditeter",
+      "synonyms": [{ "text": "Spontan abort, återkommande", "weight": 1 }],
+      "clinical": "Återkommande spontanaborter vid tidigare graviditeter"
     }
   }
 }

@@ -82,10 +82,10 @@ export default function EditPhenotypicFeature({
             </Disclosure.Button>
             {translationSupport && (
               <Disclosure.Panel className="py-2 text-sm text-slate-500">
-                {sortedSynonyms && (
+                {sortedSynonyms && sortedSynonyms.length > 0 && (
                   <>
                     <h3>
-                      Synonyms{" "}
+                      {t("global.synonyms")}{" "}
                       {copied ? (
                         <>
                           <ClipboardDocumentCheckIcon className="w-5 h-5 inline-block ml-1"></ClipboardDocumentCheckIcon>
